@@ -60,18 +60,3 @@ function getConsent(tracker) {
     }
     return !(getDNT() || timestamp);
 }
-
-function saveConsent() {
-    localStorage.setItem('ConsentJS', JSON.stringify(window.ConsentJS));
-}
-
-function setOptout(tracker) {
-    window.ConsentJS.consent[tracker] = window.ConsentJS.consent[tracker] || {};
-    window.ConsentJS.consent[tracker].optout = Date.now();
-    saveConsent();
-}
-function removeOptout(tracker) {
-    window.ConsentJS.consent[tracker] = window.ConsentJS.consent[tracker] || {};
-    window.ConsentJS.consent[tracker].optout = 0;
-    saveConsent();
-}
