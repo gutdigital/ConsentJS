@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConsentJS Demo</title>
+    <script src="consent.js" type="text/javascript"></script>
+    <script src="consent-settings.js" type="text/javascript"></script>
+    <script>
+        ConsentJS.init(['tracker1', 'tracker2', 'tracker3']);
+    </script>
+    <style>
+        .consent { color: green }
+        .noconsent { color: red }
+        .hide { display: none; }
+    </style>
+</head>
+<body>
+    <h1>ConsentJS Demo</h1>
+
+    <table>
+        <tr>
+            <th></th>
+            <th>Status</th>
+            <th>Data</th>
+        </tr>
+        <tr>
+            <th>Do-Not-Track</th>
+            <td><span id="DNT-on" class="noconsent hide">DNT activated!</span><span id="DNT-off" class="consent hide">DNT not activated.</span></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Tracker #1</th>
+            <td>
+                <span id="T1-off" class="noconsent hide">Not active.</span>
+                <span id="T1-on" class="consent hide">Active.</span>
+            </td>
+            <td><span id="T1-data">...</span></td>
+        </tr>
+        <tr>
+            <th>Tracker #2</th>
+            <td>
+                <span id="T2-off" class="noconsent hide">Not active.</span>
+                <span id="T2-on" class="consent hide">Active.</span>
+            </td>
+            <td><span id="T2-data">...</span></td>
+        </tr>
+        <tr>
+            <th>Tracker #3</th>
+            <td>
+                <span id="T3-off" class="noconsent hide">Not active.</span>
+                <span id="T3-on" class="consent hide">Active.</span>
+            </td>
+            <td><span id="T3-data">...</span></td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Tracker #1</th>
+            <th>Tracker #2</th>
+            <th>Tracker #3</th>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="ConsentJS.setOptout('tracker1'); location.reload();">Opt-out</button><br>
+                <button onclick="ConsentJS.removeOptout('tracker1'); location.reload();">Remove opt-out</button>
+            </td>
+            <td>
+                <button onclick="ConsentJS.setOptout('tracker2'); location.reload();">Opt-out</button><br>
+                <button onclick="ConsentJS.removeOptout('tracker2'); location.reload();">Remove opt-out</button>
+            </td>
+            <td>
+                <button onclick="ConsentJS.setOptout('tracker3'); location.reload();">Opt-out</button><br>
+                <button onclick="ConsentJS.removeOptout('tracker3'); location.reload();">Remove opt-out</button>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Copyright &copy; 2018 gut.digital.
+    </p>
+
+    <script>
+        if (ConsentJS.getDNT()) {
+            var element = document.getElementById('DNT-on');
+            element.classList.remove('hide');
+        } else {
+            var element = document.getElementById('DNT-off');
+            element.classList.remove('hide');
+        }
+
+        if (ConsentJS.getConsent('tracker1')) {
+            var element = document.getElementById('T1-on');
+            element.classList.remove('hide');
+        } else {
+            var element = document.getElementById('T1-off');
+            element.classList.remove('hide');
+        }
+
+        if (ConsentJS.getConsent('tracker2')) {
+            var element = document.getElementById('T2-on');
+            element.classList.remove('hide');
+        } else {
+            var element = document.getElementById('T2-off');
+            element.classList.remove('hide');
+        }
+
+        if (ConsentJS.getConsent('tracker3')) {
+            var element = document.getElementById('T3-on');
+            element.classList.remove('hide');
+        } else {
+            var element = document.getElementById('T3-off');
+            element.classList.remove('hide');
+        }
+
+        document.getElementById('T1-data').innerHTML = JSON.stringify(ConsentJS.consent.tracker1);
+        document.getElementById('T2-data').innerHTML = JSON.stringify(ConsentJS.consent.tracker2);
+        document.getElementById('T3-data').innerHTML = JSON.stringify(ConsentJS.consent.tracker3);
+    </script>
+</body>
+</html>
