@@ -27,7 +27,7 @@ var ConsentJS = {
             console.log('ConsentJS: Undefined tracker \''+ tracker + '\'');
             return false;
         } else {
-            return !this.getDNT() || (this.consent[tracker].optout > 0);
+            return !this.getDNT() && (this.consent[tracker].optout === 0);
         }
     },
     'consent': {}
