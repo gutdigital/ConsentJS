@@ -19,7 +19,7 @@ var ConsentJS = {
     },
 
     'getDNT': function() {
-       // Get DNT header values from different browsers. See:
+        // Get DNT header values from different browsers. See:
         // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack#Browser_compatibility
         var DNT = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || '');
 
