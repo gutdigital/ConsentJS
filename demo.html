@@ -12,6 +12,13 @@
         .consent { color: green }
         .noconsent { color: red }
         .hide { display: none; }
+        .data {
+            font-family: monospace;
+        }
+        th, td {
+            padding: 0.3em;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +41,7 @@
                 <span id="T1-off" class="noconsent hide">Not active.</span>
                 <span id="T1-on" class="consent hide">Active.</span>
             </td>
-            <td><span id="T1-data">...</span></td>
+            <td><span id="T1-data" class="data">...</span></td>
         </tr>
         <tr>
             <th>Tracker #2</th>
@@ -42,7 +49,7 @@
                 <span id="T2-off" class="noconsent hide">Not active.</span>
                 <span id="T2-on" class="consent hide">Active.</span>
             </td>
-            <td><span id="T2-data">...</span></td>
+            <td><span id="T2-data" class="data">...</span></td>
         </tr>
         <tr>
             <th>Tracker #3</th>
@@ -50,7 +57,7 @@
                 <span id="T3-off" class="noconsent hide">Not active.</span>
                 <span id="T3-on" class="consent hide">Active.</span>
             </td>
-            <td><span id="T3-data">...</span></td>
+            <td><span id="T3-data" class="data">...</span></td>
         </tr>
     </table>
 
@@ -75,10 +82,6 @@
             </td>
         </tr>
     </table>
-
-    <p>
-        Copyright &copy; 2018 gut.digital.
-    </p>
 
     <script>
         if (ConsentJS.getDNT()) {
